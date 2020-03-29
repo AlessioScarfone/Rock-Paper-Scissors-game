@@ -1,0 +1,26 @@
+@import '../../common.scss';
+
+.Header {
+    width: 70%;
+    border: 3px solid $header-outline;
+    height: $header-height;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+
+    .logo {
+        height: 50%;
+    }
+}
+
+
+@media only screen and (min-width: $mobile) {
+    .Header {
+        width: 50%;
+    }
+}

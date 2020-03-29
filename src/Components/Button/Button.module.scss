@@ -1,0 +1,17 @@
+@import '../../common.scss';
+
+.Button {
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: transparent;
+    height: 40px;
+    width: 40%;
+
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    font-weight: 600;
+
+}
