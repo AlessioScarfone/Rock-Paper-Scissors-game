@@ -1,5 +1,65 @@
 @import '../../common.scss';
 
-.MoveButton {
+@mixin styling($btn-size) {
+    .MoveButton {
+        // $btn-size: 120px;
+        // $border-size: 30px;
+        $border-size: ($btn-size * 20) / 100; //border is 20% of btn size
 
+        border-radius: 50%;
+
+        .btn {
+            border: none;
+            outline: none;
+            width: $btn-size;
+            height: $btn-size;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+
+            .img {
+                box-shadow: inset 0px 6px 2px 0px #BABFD4;
+                width: $btn-size - $border-size;
+                height: $btn-size - $border-size;
+                border-radius: 50%;
+                background: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        &[data-type="rock"] {
+            box-shadow: 0px 6px 0px 0px darken($rock-color, 20%);
+
+            .btn {
+                background-image: $rock-gradient;
+            }
+        }
+
+        &[data-type="scissors"] {
+            box-shadow: 0px 6px 0px 0px darken($scissor-color, 20%);
+
+            .btn {
+                background-image: $scissor-gradient;
+            }
+        }
+
+        &[data-type="paper"] {
+            box-shadow: 0px 6px 0px 0px darken($paper-color, 20%);
+
+            .btn {
+                background-image: $paper-gradient;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $mobile) {
+    @include styling($btn-size: 120px);
+}
+
+@media only screen and (min-width: $mobile) {
+    @include styling($btn-size: 150px);
 }

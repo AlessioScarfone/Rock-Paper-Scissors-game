@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Header.module.scss'
 import PointsCounter from '../PointsCounter/PointsCounter';
+import logo from "../../assets/images/logo.svg";
 
 const Header = () => {
     return (
         <div className={styles.Header}>
-            <img src='../../../public-assets/images/logo.svg' alt="logo" className={styles.logo}></img>
+            <img src={logo} alt="logo" className={styles.logo}></img>
             <PointsCounter points="12"></PointsCounter>
         </div>
     );

@@ -12,13 +12,45 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
+
   background-image: $background;
 
   .rulesBtnContainer {
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+
+  .gameSectionBasic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    $move: 60%;
+
+    // TODO: adjust position and set desktop position
+    // TODO: set button on the center of the triangle
+    background-image: url("./assets/images/bg-triangle.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:  $move;
+
+    .rock {
+      position: absolute;
+      transform: translate(0, $move);
+    }
+
+    .scissors {
+      position: absolute;
+      transform: translate($move, -$move);
+    }
+
+    .paper {
+      position: absolute;
+      transform: translate(-$move, -$move);
+    }
   }
 
 }
