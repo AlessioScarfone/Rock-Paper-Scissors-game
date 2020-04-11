@@ -8,6 +8,7 @@ import MoveButton from './Components/MoveButton/MoveButton';
 import rock from './assets/images/icon-rock.svg';
 import scissors from './assets/images/icon-scissors.svg';
 import paper from './assets/images/icon-paper.svg';
+import { RPSMove } from './Constants';
 
 function App() {
 
@@ -21,17 +22,14 @@ function App() {
     setShowRulesModal(false);
   }
 
-  const rockType = 'rock';
-  const scissorsType = 'scissors';
-  const paperType = 'paper';
 
   return (
     <div className={styles.App}>
       <Header></Header>
       <div className={styles.gameSectionBasic}>
-        <MoveButton img={scissors} type={scissorsType} customClass={[styles.scissors]}></MoveButton>
-        <MoveButton img={paper} type={paperType} customClass={[styles.paper]}></MoveButton>
-        <MoveButton img={rock} type={rockType} customClass={[styles.rock]}></MoveButton>
+        <MoveButton img={scissors} type={RPSMove.scissors} customClass={[styles.scissors]}></MoveButton>
+        <MoveButton img={paper} type={RPSMove.paper} customClass={[styles.paper]}></MoveButton>
+        <MoveButton img={rock} type={RPSMove.rock} customClass={[styles.rock]}></MoveButton>
       </div>
       <div className={styles.rulesBtnContainer}>
         <Button text="Rules" className={styles.rulesBtn} customCss={[styles.rulesBtn]} onClickHandler={openModalHandler}></Button>
