@@ -1,23 +1,51 @@
-import { useState } from "react"
-import { RPSMove } from './Constants';
+import { useState, useCallback } from "react"
+// import { RPSMove } from '../Constants';
 
-const useRPSGame = () => {
+export default function useRPSGame(beatMap) {
 
-    const [move, setMove]= useState(undefined);
+    const [playerMove, setPlayerMove] = useState();
+    const [CPUmove, setCPUMove] = useState();
 
-    const selectRandomMove = () => {
-        //TODO: implement
+    const getCPUMove = () => {
+        const keys = Array.from(beatMap.keys());
+        const elementCount = keys.length;
+        let random = Math.floor(Math.random() * elementCount);
+        const cpuMove = keys[random];
+        setCPUMove(cpuMove);
+        return cpuMove;
     }
 
-    const getResult = () => {
-        //TODO: implement
-    }
+    const reset = useCallback(() => {
+        setCPUMove("");
+        setPlayerMove("")
+    }, []);
 
-    return {
-        setMove, 
-        selectRandomMove,
+    const getResult = useCallback(
+        () => {
+            console.log("get Result:", playerMove, CPUmove);
+            console.log("PLAYER BEAT MAP:", beatMap.get(playerMove));
+            console.log("CPU BEAT MAP:", beatMap.get(CPUmove));
+            if (!playerMove || !CPUmove)
+                throw new Error("Set move before");
+            else {
+                let res = 0;
+                if (beatMap.get(CPUmove) === playerMove)
+                    res = -1
+                if (beatMap.get(playerMove) === CPUmove)
+                    res = 1;
+                reset();
+                return res;
+            }
+        },
+        [CPUmove, playerMove, beatMap, reset],
+    );
+
+
+    return [
+        playerMove,
+        setPlayerMove,
+        CPUmove,
+        getCPUMove,
         getResult
-      }
-
-
+    ];
 }

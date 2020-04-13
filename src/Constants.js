@@ -4,4 +4,8 @@ export const RPSMove = {
     scissors: 'scissors'
 }
 
-//TODO: SET "BEATS" MAP
+export const BeatMapOriginal = new Map([
+    [RPSMove.rock , RPSMove.scissors],
+    [RPSMove.scissors , RPSMove.paper],
+    [RPSMove.paper , RPSMove.rock]
+])
