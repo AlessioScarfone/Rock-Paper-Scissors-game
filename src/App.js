@@ -3,13 +3,11 @@ import styles from './App.module.scss';
 import Header from './Components/Header/Header';
 import Button from './Components/Button/Button';
 import Modal from './Components/Modal/Modal';
-import MoveButton from './Components/MoveButton/MoveButton';
 
-import rock from './assets/images/icon-rock.svg';
-import scissors from './assets/images/icon-scissors.svg';
-import paper from './assets/images/icon-paper.svg';
-import { RPSMove, BeatMapOriginal } from './Constants';
+import { BeatMapOriginal } from './Constants';
 import useRPSGame from './CustomHook/useRPSGame';
+import MoveSelection from './Components/MoveSelection/MoveSelection';
+import Match from './Components/Match/Match';
 
 function App() {
 
@@ -25,34 +23,33 @@ function App() {
   const onMoveClick = (type) => () => {
     setPlayerMove(type);
     console.log("Player choose:", type);
-    let cpuMove = selectCPUMove();
-    console.log("CPU choose:", cpuMove);
+    // let cpuMove = selectCPUMove();
+    // console.log("CPU choose:", cpuMove);
     setShowMatch(true);
   }
 
-  const memoizedGetResult = useCallback(() => { 
-    return getResult(); 
-  }, [getResult]);
+  // useEffect(() => {
+  //   if (playerMove && CPUmove)
+  //     setShowMatch(true);
+  //   return () => { };
+  // }, [playerMove, CPUmove]);
 
-  useEffect(() => {
-    if (playerMove && CPUmove) {
-      let result = memoizedGetResult();
-      console.log(result);
-      setPoints(p => p + result);
-    }
-    return () => {
-    };
-  }, [playerMove, CPUmove, memoizedGetResult]);
+  // useEffect(() => {
+  //   if (playerMove && CPUmove) {
+  //     let result = memoizedGetResult();
+  //     console.log(result);
+  //     setPoints(p => p + result);
+  //   }
+  //   return () => {
+  //   };
+  // }, [playerMove, CPUmove, memoizedGetResult]);
 
   return (
     <div className={styles.App}>
       <Header points={points}></Header>
-      { !showMatch ?
-        <div className={styles.gameSectionBasic}>
-          <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={[styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
-          <MoveButton img={paper} moveType={RPSMove.paper} customClass={[styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
-          <MoveButton img={rock} moveType={RPSMove.rock} customClass={[styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
-        </div> : <p>MATCH</p>
+      {!showMatch ?
+        <MoveSelection onMoveClick={onMoveClick} /> : 
+        <Match playerMove={playerMove} CPUMove={CPUmove} selectCPUMove={selectCPUMove}/>
       }
       <div className={styles.rulesBtnContainer}>
         <Button text="Rules" className={styles.rulesBtn} customCss={[styles.rulesBtn]} onClickHandler={toggleModalHandler}></Button>
