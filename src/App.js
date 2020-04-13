@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.scss';
 import Header from './Components/Header/Header';
 import Button from './Components/Button/Button';
@@ -14,7 +14,7 @@ function App() {
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [showMatch, setShowMatch] = useState(false);
   const [points, setPoints] = useState(0);
-  const [playerMove, setPlayerMove, CPUmove, selectCPUMove, getResult] = useRPSGame(BeatMapOriginal);
+  const [playerMove, setPlayerMove, CPUmove, selectCPUMove, getResult, reset] = useRPSGame(BeatMapOriginal);
 
   const toggleModalHandler = () => {
     setShowRulesModal(!showRulesModal);
@@ -23,36 +23,23 @@ function App() {
   const onMoveClick = (type) => () => {
     setPlayerMove(type);
     console.log("Player choose:", type);
-    // let cpuMove = selectCPUMove();
-    // console.log("CPU choose:", cpuMove);
     setShowMatch(true);
   }
 
-  // useEffect(() => {
-  //   if (playerMove && CPUmove)
-  //     setShowMatch(true);
-  //   return () => { };
-  // }, [playerMove, CPUmove]);
-
-  // useEffect(() => {
-  //   if (playerMove && CPUmove) {
-  //     let result = memoizedGetResult();
-  //     console.log(result);
-  //     setPoints(p => p + result);
-  //   }
-  //   return () => {
-  //   };
-  // }, [playerMove, CPUmove, memoizedGetResult]);
+  const playAgainHandler = () => {
+    reset();
+    setShowMatch(false);
+  }
 
   return (
     <div className={styles.App}>
       <Header points={points}></Header>
       {!showMatch ?
         <MoveSelection onMoveClick={onMoveClick} /> : 
-        <Match playerMove={playerMove} CPUMove={CPUmove} selectCPUMove={selectCPUMove}/>
+        <Match playerMove={playerMove} CPUMove={CPUmove} selectCPUMove={selectCPUMove} setPoints={setPoints} getResult={getResult} playAgainHandler={playAgainHandler}/>
       }
       <div className={styles.rulesBtnContainer}>
-        <Button text="Rules" className={styles.rulesBtn} customCss={[styles.rulesBtn]} onClickHandler={toggleModalHandler}></Button>
+        <Button text="Rules" customCss={[styles.rulesBtn]} onClickHandler={toggleModalHandler}></Button>
       </div>
       {showRulesModal ? <Modal open={showRulesModal} onCloseHandler={toggleModalHandler}></Modal> : null}
     </div>

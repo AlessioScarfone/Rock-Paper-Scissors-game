@@ -33,11 +33,10 @@ export default function useRPSGame(beatMap) {
                     res = -1
                 if (beatMap.get(playerMove) === CPUmove)
                     res = 1;
-                reset();
                 return res;
             }
         },
-        [CPUmove, playerMove, beatMap, reset],
+        [CPUmove, playerMove, beatMap],
     );
 
 
@@ -46,6 +45,7 @@ export default function useRPSGame(beatMap) {
         setPlayerMove,
         CPUmove,
         selectCPUMove,
-        getResult
+        getResult,
+        reset
     ];
 }
