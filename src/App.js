@@ -14,8 +14,9 @@ import useRPSGame from './CustomHook/useRPSGame';
 function App() {
 
   const [showRulesModal, setShowRulesModal] = useState(false);
+  const [showMatch, setShowMatch] = useState(false);
   const [points, setPoints] = useState(0);
-  const [playerMove, setPlayerMove, CPUmove, getCPUMove, getResult] = useRPSGame(BeatMapOriginal);
+  const [playerMove, setPlayerMove, CPUmove, selectCPUMove, getResult] = useRPSGame(BeatMapOriginal);
 
   const toggleModalHandler = () => {
     setShowRulesModal(!showRulesModal);
@@ -24,8 +25,9 @@ function App() {
   const onMoveClick = (type) => () => {
     setPlayerMove(type);
     console.log("Player choose:", type);
-    let cpuMove = getCPUMove();
+    let cpuMove = selectCPUMove();
     console.log("CPU choose:", cpuMove);
+    setShowMatch(true);
   }
 
   const memoizedGetResult = useCallback(() => { 
@@ -45,11 +47,13 @@ function App() {
   return (
     <div className={styles.App}>
       <Header points={points}></Header>
-      <div className={styles.gameSectionBasic}>
-        <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={[styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
-        <MoveButton img={paper} moveType={RPSMove.paper} customClass={[styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
-        <MoveButton img={rock} moveType={RPSMove.rock} customClass={[styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
-      </div>
+      { !showMatch ?
+        <div className={styles.gameSectionBasic}>
+          <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={[styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
+          <MoveButton img={paper} moveType={RPSMove.paper} customClass={[styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
+          <MoveButton img={rock} moveType={RPSMove.rock} customClass={[styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
+        </div> : <p>MATCH</p>
+      }
       <div className={styles.rulesBtnContainer}>
         <Button text="Rules" className={styles.rulesBtn} customCss={[styles.rulesBtn]} onClickHandler={toggleModalHandler}></Button>
       </div>

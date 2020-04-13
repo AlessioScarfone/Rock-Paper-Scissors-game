@@ -6,7 +6,7 @@ export default function useRPSGame(beatMap) {
     const [playerMove, setPlayerMove] = useState();
     const [CPUmove, setCPUMove] = useState();
 
-    const getCPUMove = () => {
+    const selectCPUMove = () => {
         const keys = Array.from(beatMap.keys());
         const elementCount = keys.length;
         let random = Math.floor(Math.random() * elementCount);
@@ -45,7 +45,7 @@ export default function useRPSGame(beatMap) {
         playerMove,
         setPlayerMove,
         CPUmove,
-        getCPUMove,
+        selectCPUMove,
         getResult
     ];
 }
