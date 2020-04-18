@@ -1,7 +1,9 @@
 export const RPSMove = {
     rock: 'rock',
     paper: 'paper',
-    scissors: 'scissors'
+    scissors: 'scissors',
+    lizard: 'lizard',
+    spock: 'spock'
 }
 
 export const BeatMapOriginal = new Map([

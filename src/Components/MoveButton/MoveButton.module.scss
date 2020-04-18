@@ -54,6 +54,22 @@
                 background-image: $paper-gradient;
             }
         }
+
+        &[data-type="lizard"] {
+            box-shadow: 0px 6px 0px 0px darken($lizard-color, 20%);
+
+            .btn {
+                background-image: $lizard-gradient;
+            }
+        }
+
+        &[data-type="spock"] {
+            box-shadow: 0px 6px 0px 0px darken($spock-color, 20%);
+
+            .btn {
+                background-image: $spock-gradient;
+            }
+        }
     }
 }
 
