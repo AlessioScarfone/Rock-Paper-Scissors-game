@@ -6,6 +6,8 @@ import MoveButton from '../MoveButton/MoveButton';
 import rock from '../../assets/images/icon-rock.svg';
 import scissors from '../../assets/images/icon-scissors.svg';
 import paper from '../../assets/images/icon-paper.svg';
+import spock from '../../assets/images/icon-spock.svg';
+import lizard from '../../assets/images/icon-lizard.svg';
 import Button from '../Button/Button';
 
 const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playAgainHandler }) => {
@@ -44,6 +46,8 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
                         {playerMove === RPSMove.paper ? <MoveButton img={paper} moveType={RPSMove.paper} onClick={() => null}></MoveButton> : null}
                         {playerMove === RPSMove.scissors ? <MoveButton img={scissors} moveType={RPSMove.scissors} onClick={() => null}></MoveButton> : null}
                         {playerMove === RPSMove.rock ? <MoveButton img={rock} moveType={RPSMove.rock} onClick={() => null}></MoveButton> : null}
+                        {playerMove === RPSMove.lizard ? <MoveButton img={lizard} moveType={RPSMove.lizard} onClick={() => null}></MoveButton> : null}
+                        {playerMove === RPSMove.spock ? <MoveButton img={spock} moveType={RPSMove.spock} onClick={() => null}></MoveButton> : null}
                     </div>
                     <h4 className={styles.pickLabel}>You picked</h4>
                 </div>
@@ -53,6 +57,8 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
                         {CPUMove === RPSMove.paper ? <MoveButton img={paper} moveType={RPSMove.paper} onClick={() => null}></MoveButton> : null}
                         {CPUMove === RPSMove.scissors ? <MoveButton img={scissors} moveType={RPSMove.scissors} onClick={() => null}></MoveButton> : null}
                         {CPUMove === RPSMove.rock ? <MoveButton img={rock} moveType={RPSMove.rock} onClick={() => null}></MoveButton> : null}
+                        {CPUMove === RPSMove.lizard ? <MoveButton img={lizard} moveType={RPSMove.lizard} onClick={() => null}></MoveButton> : null}
+                        {CPUMove === RPSMove.spock ? <MoveButton img={spock} moveType={RPSMove.spock} onClick={() => null}></MoveButton> : null}
                     </div>
                     <h4 className={styles.pickLabel}>The house picked</h4>
                 </div>

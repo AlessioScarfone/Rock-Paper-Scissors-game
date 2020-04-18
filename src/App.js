@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './App.module.scss';
 import Header from './Components/Header/Header';
 import Button from './Components/Button/Button';
+import Switch from './Components/Switch/Switch';
 import Modal from './Components/Modal/Modal';
 
 import Context from './Context';
@@ -13,8 +14,11 @@ function App() {
 
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [showMatch, setShowMatch] = useState(false);
+  const [isBonusMode, setIsBonusMode] = useState(false); //state pass with context
   const [points, setPoints] = useState(0);
   const [playerMove, setPlayerMove, CPUmove, selectCPUMove, getResult, reset] = useRPSGame();
+
+  const changeIsBonusMode = () => { setIsBonusMode(!isBonusMode) }
 
   const toggleModalHandler = () => {
     setShowRulesModal(!showRulesModal);
@@ -32,7 +36,7 @@ function App() {
   }
 
   return (
-    <Context.Provider value={{isBonusMode: false}}>
+    <Context.Provider value={{ 'isBonusMode': isBonusMode, 'changeIsBonusMode': changeIsBonusMode }}>
       <div className={styles.App}>
         <Header points={points}></Header>
         {!showMatch ?
@@ -40,6 +44,7 @@ function App() {
           <Match playerMove={playerMove} CPUMove={CPUmove} selectCPUMove={selectCPUMove} setPoints={setPoints} getResult={getResult} playAgainHandler={playAgainHandler} />
         }
         <div className={styles.rulesBtnContainer}>
+          <Switch></Switch>
           <Button text="Rules" customCss={[styles.rulesBtn]} onClickHandler={toggleModalHandler}></Button>
         </div>
         {showRulesModal ? <Modal open={showRulesModal} onCloseHandler={toggleModalHandler}></Modal> : null}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './MoveSelection.module.scss'
 import MoveButton from '../MoveButton/MoveButton';
 import { RPSMove } from '../../Constants';
@@ -7,11 +7,15 @@ import scissors from '../../assets/images/icon-scissors.svg';
 import paper from '../../assets/images/icon-paper.svg';
 import spock from '../../assets/images/icon-spock.svg';
 import lizard from '../../assets/images/icon-lizard.svg';
+import Context from '../../Context';
 
-const MoveSelection = ({ onMoveClick, type = 'basic' }) => {
+const MoveSelection = ({ onMoveClick }) => {
+
+    const { isBonusMode } = useContext(Context);
+
     return (
         <>
-            {type === "bonus" ?
+            {isBonusMode ?
                 <div className={styles.MoveSectionBonus}>
                     <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={[styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
                     <MoveButton img={paper} moveType={RPSMove.paper} customClass={[styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>

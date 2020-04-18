@@ -74,11 +74,12 @@
     }
 
     .rulesBtnContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       box-sizing: border-box;
       width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      padding-right: 3%;
+      padding: 0 3%;
 
       .rulesBtn {
         width: 12%;
