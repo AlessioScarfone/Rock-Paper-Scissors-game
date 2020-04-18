@@ -40,16 +40,15 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
         <div className={styles.Match}>
             <div className={styles.selectedMoves}>
                 <div className={styles.pick}>
-                    <div className={win > 0 ? [styles.winner, styles.moveContainer].join(" ") : styles.moveContainer}>
+                    <div className={win > 0 ? styles.winner : null}>
                         {playerMove === RPSMove.paper ? <MoveButton img={paper} moveType={RPSMove.paper} onClick={() => null}></MoveButton> : null}
                         {playerMove === RPSMove.scissors ? <MoveButton img={scissors} moveType={RPSMove.scissors} onClick={() => null}></MoveButton> : null}
                         {playerMove === RPSMove.rock ? <MoveButton img={rock} moveType={RPSMove.rock} onClick={() => null}></MoveButton> : null}
                     </div>
                     <h4 className={styles.pickLabel}>You picked</h4>
                 </div>
-
                 <div className={styles.pick}>
-                    <div className={win < 0 ? [styles.winner, styles.moveContainer].join(" ") : styles.moveContainer}>
+                    <div className={win < 0 ? styles.winner: null}>
                         {!CPUMove ? <div className={styles.emptyMove}></div> : null}
                         {CPUMove === RPSMove.paper ? <MoveButton img={paper} moveType={RPSMove.paper} onClick={() => null}></MoveButton> : null}
                         {CPUMove === RPSMove.scissors ? <MoveButton img={scissors} moveType={RPSMove.scissors} onClick={() => null}></MoveButton> : null}

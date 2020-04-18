@@ -5,6 +5,7 @@
         // $btn-size: 120px;
         // $border-size: 30px;
         $border-size: ($btn-size * 25) / 100; //border is 20% of btn size
+        z-index: 2;
 
         border-radius: 50%;
 
