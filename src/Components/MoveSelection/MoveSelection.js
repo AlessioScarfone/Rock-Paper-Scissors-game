@@ -12,14 +12,14 @@ const MoveSelection = ({ onMoveClick, type = 'basic' }) => {
     return (
         <>
             {type === "bonus" ?
-                <div className={styles.MoveSectionBasic}>
+                <div className={styles.MoveSectionBonus}>
                     <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={[styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
                     <MoveButton img={paper} moveType={RPSMove.paper} customClass={[styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
                     <MoveButton img={rock} moveType={RPSMove.rock} customClass={[styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
                     <MoveButton img={spock} moveType={RPSMove.spock} customClass={[styles.spock]} onClick={onMoveClick(RPSMove.spock)}></MoveButton>
                     <MoveButton img={lizard} moveType={RPSMove.lizard} customClass={[styles.lizard]} onClick={onMoveClick(RPSMove.lizard)}></MoveButton>
                 </div> :
-                <div className={styles.MoveSectionBonus}>
+                <div className={styles.MoveSectionBasic}>
                     <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={[styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
                     <MoveButton img={paper} moveType={RPSMove.paper} customClass={[styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
                     <MoveButton img={rock} moveType={RPSMove.rock} customClass={[styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
