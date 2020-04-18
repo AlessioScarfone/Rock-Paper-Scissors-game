@@ -13,9 +13,9 @@
     .winner {
         border-radius: 50%;
         outline: none;
-        box-shadow: 0px 0px 0px $winnerDecorationSize #33435f40, 
-                    0px 0px 0px $winnerDecorationSize*2 #293A5840, 
-                    0px 0px 0px $winnerDecorationSize*3 #23365640; 
+        box-shadow: 0px 0px 0px $winnerDecorationSize #33435f40,
+            0px 0px 0px $winnerDecorationSize*2 #293A5840,
+            0px 0px 0px $winnerDecorationSize*3 #23365640;
     }
 }
 
@@ -71,13 +71,13 @@
             margin-bottom: 20px;
         }
 
-        .playAgain {
+        .playAgainBtn {
             background-color: white;
             color: $dark-text;
             width: 50%;
 
-            &:hover{
-                color:red;
+            &:hover {
+                color: red;
             }
         }
     }
@@ -87,7 +87,7 @@
     }
 
     @media only screen and (min-width: $mobile) {
-        @include stylingEmptyBtn($btn-size: 150px , $winnerDecorationSize: 50px);
+        @include stylingEmptyBtn($btn-size: 150px, $winnerDecorationSize: 50px);
     }
 
 }
@@ -95,10 +95,11 @@
 
 
 @media only screen and (min-width: $mobile) {
+
     //TODO: Define DESKTOP style
     .Match {
-        .selectedMoves{
-            .pick{
+        .selectedMoves {
+            .pick {
                 .pickLabel {
                     font-size: 18px;
                     order: -1;
@@ -109,11 +110,15 @@
             }
         }
 
-        .resultSection{
+        .resultSection {
             position: absolute;
 
-            .playAgain {
+            .playAgainBtn {
                 width: 20%;
+
+                &.pair {
+                    margin-top: 100px;
+                }
             }
         }
 

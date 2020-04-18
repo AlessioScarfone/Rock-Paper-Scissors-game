@@ -60,7 +60,7 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
             <div className={styles.resultSection}>
                 {win > 0 ? <h1 className={styles.resultLabel}>You Win</h1> : null}
                 {win < 0 ? <h1 className={styles.resultLabel}>You Lose</h1> : null}
-                {showPlayAgainBtn ? <Button text="Play Again" customCss={[styles.playAgain]} onClickHandler={playAgainHandler}></Button> : null}
+                {showPlayAgainBtn ? <Button text="Play Again" customCss={win === 0 ? [styles.playAgainBtn, styles.pair] : [styles.playAgainBtn]} onClickHandler={playAgainHandler}></Button> : null}
             </div>
         </div >
     );
