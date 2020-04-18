@@ -74,7 +74,7 @@
 }
 
 @media only screen and (max-width: $mobile) {
-    @include styling($btn-size: 120px);
+    @include styling($btn-size: 110px);
 }
 
 @media only screen and (min-width: $mobile) {
