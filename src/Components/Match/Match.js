@@ -21,7 +21,7 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
         setTimeout(() => {
             if (playerMove) {
                 let cpuMove = selectCPUMove(isBonusMode ? BeatMapBonus : BeatMapOriginal);
-                // console.log("CPU choose:", cpuMove);
+                console.log("CPU choose:", cpuMove);
             }
         }, 300);
         return () => { };
