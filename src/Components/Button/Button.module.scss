@@ -15,8 +15,10 @@
     font-weight: 600;
 
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
     &:focus {
         outline: none;
+        
     }
 }
