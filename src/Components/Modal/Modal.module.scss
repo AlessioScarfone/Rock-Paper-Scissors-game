@@ -47,7 +47,7 @@
 }
 
 
-@media only screen and (min-width: $mobile) {
+@media only screen and (min-width: $mobile*1.5) {
     .Modal {
         width: 50vh;
         height: 50vh;

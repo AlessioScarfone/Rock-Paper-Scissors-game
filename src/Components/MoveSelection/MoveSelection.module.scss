@@ -1,20 +1,18 @@
 @import '../../common.scss';
 
-.MoveSectionBasic {
+.MoveSection {
     background-image: url("../../assets/images/bg-triangle.svg");
-    //TODO: background bonus
     background-position: center;
     background-repeat: no-repeat;
     background-size: 65%;
+
+    &.MoveSectionBonus {
+        background-image: url("../../assets/images/bg-pentagon.svg");
+    }
+
 }
 
-.MoveSectionBonus {
-    //TODO background
-}
-
-
-.MoveSectionBasic,
-.MoveSectionBonus {
+.MoveSection {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +21,7 @@
 
     .rock {
         position: absolute;
-        transform: translate(0, 50%);
+        transform: translate(0, 70%);
 
         &.bonus {
             transform: translate(70%, 80%);
@@ -37,14 +35,16 @@
 
     .scissors {
         position: absolute;
-        transform: translate(75%, -80%);
+        transform: translate(85%, -85%);
 
-        &.bonus {transform: translate(0%, -100%);}
+        &.bonus {
+            transform: translate(0%, -100%);
+        }
     }
 
     .paper {
         position: absolute;
-        transform: translate(-70%, -80%);
+        transform: translate(-85%, -85%);
 
         &.bonus {
             transform: translate(100%, -40%);
@@ -57,22 +57,11 @@
     }
 }
 
-@media only screen and (min-width: $mobile) {
+//DESKTOP
+@media only screen and (min-width: $mobile ) {
 
-    .MoveSectionBasic {
-        background-size: 20%;
-
-        .rock {
-            transform: translate(0, 55%);
-        }
-
-        .scissors {
-            transform: translate(70%, -70%);
-        }
-
-        .paper {
-            transform: translate(-70%, -70%);
-        }
+    .MoveSection {
+        background-size: initial;
     }
 
 }

@@ -9,26 +9,18 @@ import spock from '../../assets/images/icon-spock.svg';
 import lizard from '../../assets/images/icon-lizard.svg';
 import Context from '../../Context';
 
-const MoveSelection = ({ onMoveClick}) => {
+const MoveSelection = ({ onMoveClick }) => {
 
     const { isBonusMode } = useContext(Context);
 
     return (
-        <>
-            { isBonusMode ?
-                <div className={styles.MoveSectionBonus}>
-                    <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={isBonusMode ? [styles.scissors, styles.bonus]: [styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
-                    <MoveButton img={paper} moveType={RPSMove.paper} customClass={isBonusMode ? [styles.paper, styles.bonus]: [styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
-                    <MoveButton img={rock} moveType={RPSMove.rock} customClass={isBonusMode ? [styles.rock, styles.bonus]: [styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
-                    <MoveButton img={spock} moveType={RPSMove.spock} customClass={isBonusMode ? [styles.spock, styles.bonus]: [styles.spock]} onClick={onMoveClick(RPSMove.spock)}></MoveButton>
-                    <MoveButton img={lizard} moveType={RPSMove.lizard} customClass={isBonusMode ? [styles.lizard, styles.bonus]: [styles.lizard]} onClick={onMoveClick(RPSMove.lizard)}></MoveButton>
-                </div> :
-                <div className={styles.MoveSectionBasic}>
-                    <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={[styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
-                    <MoveButton img={paper} moveType={RPSMove.paper} customClass={[styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
-                    <MoveButton img={rock} moveType={RPSMove.rock} customClass={[styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
-                </div>}
-        </>
+        <div className={isBonusMode ? styles.MoveSection + " " + styles.MoveSectionBonus : styles.MoveSection}>
+            <MoveButton img={scissors} moveType={RPSMove.scissors} customClass={isBonusMode ? [styles.scissors, styles.bonus] : [styles.scissors]} onClick={onMoveClick(RPSMove.scissors)}></MoveButton>
+            <MoveButton img={paper} moveType={RPSMove.paper} customClass={isBonusMode ? [styles.paper, styles.bonus] : [styles.paper]} onClick={onMoveClick(RPSMove.paper)}></MoveButton>
+            <MoveButton img={rock} moveType={RPSMove.rock} customClass={isBonusMode ? [styles.rock, styles.bonus] : [styles.rock]} onClick={onMoveClick(RPSMove.rock)}></MoveButton>
+            {isBonusMode ? <MoveButton img={spock} moveType={RPSMove.spock} customClass={[styles.spock]} onClick={onMoveClick(RPSMove.spock)}></MoveButton> : null}
+            {isBonusMode ? <MoveButton img={lizard} moveType={RPSMove.lizard} customClass={[styles.lizard]} onClick={onMoveClick(RPSMove.lizard)}></MoveButton> : null}
+        </div>
     )
 };
 

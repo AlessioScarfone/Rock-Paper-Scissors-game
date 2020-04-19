@@ -16,39 +16,18 @@
   background-image: $background;
 
   .rulesBtnContainer {
-    width: 100%;
     display: flex;
-    justify-content: center;
-  }
-
-  .gameSectionBasic {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    padding: 0 5%;
 
-    background-image: url("./assets/images/bg-triangle.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:  65%;
-
-    .rock {
-      position: absolute;
-      transform: translate(0, 50%);
-    }
-
-    .scissors {
-      position: absolute;
-      transform: translate(75%, -80%);
-    }
-
-    .paper {
-      position: absolute;
-      transform: translate(-70%, -80%);
+    .rulesBtn {
+      width: 100px;
+      height: 36px;
     }
   }
-
 }
 
 
@@ -57,34 +36,5 @@
     padding-top: 3%;
     padding-bottom: 3%;
 
-    .gameSectionBasic {
-      background-size: 20%;
-
-      .rock {
-        transform: translate(0, 55%);
-      }
-  
-      .scissors {
-        transform: translate(70%, -70%);
-      }
-  
-      .paper {
-        transform: translate(-70%, -70%);
-      }
-    }
-
-    .rulesBtnContainer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-sizing: border-box;
-      width: 100%;
-      padding: 0 3%;
-
-      .rulesBtn {
-        width: 12%;
-        height: 36px;
-      }
-    }
   }
 }
