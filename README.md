@@ -3,8 +3,8 @@
 
 Live Demo: [https://rock-paper-scissor-pwa.surge.sh/](https://rock-paper-scissor-pwa.surge.sh/)
 
-[Challenge Readme](./design/README.md)
-[Challenge Link](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH)
+- [Challenge Readme](./design/README.md)
+- [Challenge Link](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH)
 
 ## Project Info
 
