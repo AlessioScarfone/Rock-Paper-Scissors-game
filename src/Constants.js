@@ -6,11 +6,11 @@ export const RPSMove = {
     spock: 'spock'
 }
 
-// export const BeatMapOriginal = new Map([
-//     [RPSMove.rock , [RPSMove.scissors]],
-//     [RPSMove.scissors , [RPSMove.paper]],
-//     [RPSMove.paper , [RPSMove.rock]]
-// ])
+export const BeatMapOriginal = new Map([
+    [RPSMove.rock , [RPSMove.scissors]],
+    [RPSMove.scissors , [RPSMove.paper]],
+    [RPSMove.paper , [RPSMove.rock]]
+])
 
 export const BeatMapBonus = new Map([
     [RPSMove.rock , [RPSMove.scissors, RPSMove.lizard]],

@@ -7,8 +7,11 @@ export default function useRPSGame() {
     const [playerMove, setPlayerMove] = useState();
     const [CPUmove, setCPUMove] = useState();
 
-    const selectCPUMove = useCallback(() => {
-        const keys = Array.from(BeatMapBonus.keys());
+    /**
+     * Get a random move from the input "beatMap"
+     */
+    const selectCPUMove = useCallback((BeatMap) => {
+        const keys = Array.from(BeatMap.keys());
         const elementCount = keys.length;
         let random = Math.floor(Math.random() * elementCount);
         const cpuMove = keys[random];
@@ -23,9 +26,6 @@ export default function useRPSGame() {
 
     const getResult = useCallback(
         () => {
-            console.log("get Result:", playerMove, CPUmove);
-            console.log("PLAYER BEAT MAP:", BeatMapBonus.get(playerMove));
-            console.log("CPU BEAT MAP:", BeatMapBonus.get(CPUmove));
             if (!playerMove || !CPUmove)
                 throw new Error("Set move before");
             else {

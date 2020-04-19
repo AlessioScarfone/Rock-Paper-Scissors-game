@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './Match.module.scss';
-import { RPSMove } from '../../Constants';
+import { RPSMove, BeatMapBonus, BeatMapOriginal } from '../../Constants';
 import MoveButton from '../MoveButton/MoveButton';
+import Context from '../../Context';
 
 import rock from '../../assets/images/icon-rock.svg';
 import scissors from '../../assets/images/icon-scissors.svg';
@@ -14,21 +15,21 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
 
     const [win, setWin] = useState(0);
     const [showPlayAgainBtn, setShowPlayAgainBtn] = useState(false);
+    const { isBonusMode } = useContext(Context);
 
     useEffect(() => {
         setTimeout(() => {
             if (playerMove) {
-                let cpuMove = selectCPUMove();
-                console.log("CPU choose:", cpuMove);
+                let cpuMove = selectCPUMove(isBonusMode ? BeatMapBonus : BeatMapOriginal);
+                // console.log("CPU choose:", cpuMove);
             }
         }, 300);
         return () => { };
-    }, [selectCPUMove, playerMove]);
+    }, [selectCPUMove, playerMove, isBonusMode]);
 
     useEffect(() => {
         if (playerMove && CPUMove) {
             let result = getResult();
-            console.log(result);
             setPoints(p => p + result);
             setWin(result);
             setShowPlayAgainBtn(true);
@@ -37,7 +38,6 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
         };
     }, [playerMove, CPUMove, getResult, setPoints]);
 
-    // TODO Fix decoration border vittoria
     return (
         <div className={styles.Match}>
             <div className={styles.selectedMoves}>
@@ -52,7 +52,7 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
                     <h4 className={styles.pickLabel}>You picked</h4>
                 </div>
                 <div className={styles.pick}>
-                    <div className={win < 0 ? styles.winner: null}>
+                    <div className={win < 0 ? styles.winner : null}>
                         {!CPUMove ? <div className={styles.emptyMove}></div> : null}
                         {CPUMove === RPSMove.paper ? <MoveButton img={paper} moveType={RPSMove.paper} onClick={() => null}></MoveButton> : null}
                         {CPUMove === RPSMove.scissors ? <MoveButton img={scissors} moveType={RPSMove.scissors} onClick={() => null}></MoveButton> : null}
