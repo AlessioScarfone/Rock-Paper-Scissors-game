@@ -83,5 +83,5 @@
 }
 
 @media only screen and (min-width: $mobile*2 + 1px) {
-    @include styling($btn-size: 150px);
+    @include styling($btn-size: 140px);
 }
