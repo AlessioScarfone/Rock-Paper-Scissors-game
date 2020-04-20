@@ -2,7 +2,8 @@ import { createContext } from 'react';
 
 
 const Context = createContext({
-    isBonusMode: false
+    isBonusMode: false,
+    changeIsBonusMode: () => {}
 });
 
 Context.displayName = "Context";
