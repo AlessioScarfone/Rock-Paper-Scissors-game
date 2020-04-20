@@ -13,7 +13,7 @@ import Button from '../Button/Button';
 
 const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playAgainHandler }) => {
 
-    const [win, setWin] = useState(0);
+    const [win, setWin] = useState(null);
     const [showPlayAgainBtn, setShowPlayAgainBtn] = useState(false);
     const { isBonusMode } = useContext(Context);
 
@@ -64,9 +64,8 @@ const Match = ({ playerMove, CPUMove, selectCPUMove, setPoints, getResult, playA
                 </div>
             </div>
             <div className={styles.resultSection}>
-                {win > 0 ? <h1 className={styles.resultLabel}>You Win</h1> : null}
-                {win < 0 ? <h1 className={styles.resultLabel}>You Lose</h1> : null}
-                {showPlayAgainBtn ? <Button text="Play Again" customCss={win === 0 ? [styles.playAgainBtn, styles.pair] : [styles.playAgainBtn]} onClickHandler={playAgainHandler}></Button> : null}
+                <h1 className={styles.resultLabel}>{win > 0 ? "You Win" : (win < 0 ? "You Lose" : (win === 0 ? "Tie" : ""))}</h1>
+                {showPlayAgainBtn ? <Button text="Play Again" customCss={[styles.playAgainBtn]} onClickHandler={playAgainHandler}></Button> : null}
             </div>
         </div >
     );
