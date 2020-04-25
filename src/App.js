@@ -44,7 +44,7 @@ function App() {
           <Match playerMove={playerMove} CPUMove={CPUmove} selectCPUMove={selectCPUMove} setPoints={setPoints} getResult={getResult} playAgainHandler={playAgainHandler} />
         }
         <div className={styles.rulesBtnContainer}>
-          {!showMatch ?<Switch></Switch> : null }
+          {!showMatch ?<Switch></Switch> : <div></div> }
           <Button text="Rules" customCss={[styles.rulesBtn]} onClickHandler={toggleModalHandler}></Button>
         </div>
         {showRulesModal ? <Modal open={showRulesModal} onCloseHandler={toggleModalHandler}></Modal> : null}
